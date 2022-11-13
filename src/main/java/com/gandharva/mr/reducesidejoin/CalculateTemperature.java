@@ -1,4 +1,4 @@
-package com.nbisht.mr.reducesidejoin;
+package com.gandharva.mr.reducesidejoin;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -9,12 +9,6 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.MultipleInputs;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
-
-/**
- * @author nbisht7.
- *         Purpose - Java MR reduce-side join driver code to find total sales by states.
- */
-
 public class CalculateTemperature {
 
     public static void main(String[] args) throws Exception {
@@ -50,7 +44,7 @@ public class CalculateTemperature {
           Job mr2 = new Job(config, "Sales aggregation by State");
             mr2.setJarByClass(CalculateTemperature.class);
             mr2.setMapperClass(StateTemperatureMapper.class);
-            mr2.setReducerClass(SalesAggregatorReducer.class);
+            mr2.setReducerClass(StateMonthAggregatorReduce.class);
             mr2.setOutputKeyClass(Text.class);
             mr2.setOutputValueClass(DoubleWritable.class);
 

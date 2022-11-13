@@ -1,21 +1,10 @@
-package com.nbisht.mr.reducesidejoin;
+package com.gandharva.mr.reducesidejoin;
 
 import java.io.IOException;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
-
-/**
- * @author nbisht7.
- * Purpose - Customer Mapper to fetch only customer ID and state information.
- * Input Schema - customerId, name, street, city, state, zipCode.
- * Output Schema - customerId, state.
- *
- * customer - weatherstation
- * sales - 2006.txt
- * customerid - primary key - USF/station
- */
 
 public class WeatherMapper extends Mapper<Object, Text, IntWritable, Text> {
 

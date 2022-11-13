@@ -1,19 +1,9 @@
-package com.nbisht.mr.reducesidejoin;
+package com.gandharva.mr.reducesidejoin;
 
 import java.io.IOException;
-
-import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
-
-/**
- * @author nbisht7.
- * Purpose - Joining customers and sales files based on CustomerID
- * Input Schema - Output from Customer Mapper : CustomerID, state and
- *                Output from Sales Mapper : CustomerID, salesPrice.
- * Output Schema - state, salesPrice without aggregation.
- */
 
 public class TemperatureWeatherJoinReducer extends Reducer<IntWritable, Text, Text, Text> {
 

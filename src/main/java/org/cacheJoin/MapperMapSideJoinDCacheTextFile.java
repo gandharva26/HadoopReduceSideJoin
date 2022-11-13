@@ -1,8 +1,4 @@
 package org.cacheJoin;
-/********************************************
- *Mapper
- *MapperMapSideJoinDCacheTextFile
- ********************************************/
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;

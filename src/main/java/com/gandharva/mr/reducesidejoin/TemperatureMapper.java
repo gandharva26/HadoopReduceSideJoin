@@ -1,18 +1,10 @@
-package com.nbisht.mr.reducesidejoin;
+package com.gandharva.mr.reducesidejoin;
 
 import java.io.IOException;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
-
-/**
- * @author nbisht7.
- * Purpose - Sales Mapper to fetch only customer ID and sales price information.
- * Input Schema - timestamp, customerId,salesPrice
- * Output Schema - customerId, salesPrice.
- * sales is temperature
- */
 
 public class TemperatureMapper extends Mapper<Object, Text, IntWritable, Text> {
 

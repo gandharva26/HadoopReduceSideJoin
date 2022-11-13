@@ -1,6 +1,4 @@
-package com.nbisht.mr.reducesidejoin;
-import org.apache.avro.generic.GenericData;
-
+package com.gandharva.mr.reducesidejoin;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;

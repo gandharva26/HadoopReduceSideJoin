@@ -1,18 +1,10 @@
-package com.nbisht.mr.reducesidejoin;
+package com.gandharva.mr.reducesidejoin;
 
 import java.io.IOException;
 
 import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
-
-/**
- * @author nbisht7.
- * Purpose - States Mapper to fetch the data from intermediate directory in hadoop.
- * Input Schema - state, salesPrice
- * Output Schema - state, salesPrice
- * sales - temperature
- */
 
 public class StateTemperatureMapper extends Mapper<Object, Text, Text, DoubleWritable> {
 

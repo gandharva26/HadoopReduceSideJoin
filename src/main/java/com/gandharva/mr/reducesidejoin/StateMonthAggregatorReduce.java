@@ -1,4 +1,4 @@
-package com.nbisht.mr.reducesidejoin;
+package com.gandharva.mr.reducesidejoin;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -7,14 +7,7 @@ import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
-/**
- * @author nbisht7.
- * Purpose - Final reducer to calculate aggregate sales price for each state.
- * Input Schema - state, salesPrice
- * Output Schema - state, totalSalesPrice
- */
-
-public class SalesAggregatorReducer extends Reducer<Text, DoubleWritable, Text, DoubleWritable> {
+public class StateMonthAggregatorReduce extends Reducer<Text, DoubleWritable, Text, DoubleWritable> {
     public void reduce(Text key, Iterable<DoubleWritable> values, Context context)
             throws IOException, InterruptedException {
         double totalSalesPrice = 0.0;
