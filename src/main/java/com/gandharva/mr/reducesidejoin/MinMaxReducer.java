@@ -1,13 +1,14 @@
 package com.gandharva.mr.reducesidejoin;
 
-import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.text.DecimalFormat;
+
 
 public class MinMaxReducer  extends Reducer<Text, Text, Text, Text> {
+    private static final DecimalFormat df = new DecimalFormat("0.00");
     public void reduce(Text key, Iterable<Text> values, Context context)
             throws IOException, InterruptedException {
         String max = "";
@@ -26,6 +27,7 @@ public class MinMaxReducer  extends Reducer<Text, Text, Text, Text> {
                 minTemp = temp;
             }
          }
-        context.write(key, new Text(min + " " + minTemp + " " + max + " " + maxTemp));
+        double minMaxDifference = maxTemp - minTemp;
+        context.write(key, new Text(min + " " + df.format(minTemp) + " " + max + " " + df.format(maxTemp) + " " + df.format(minMaxDifference) ));
     }
 }

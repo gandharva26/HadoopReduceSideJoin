@@ -30,7 +30,7 @@ public class CalculateTemperature {
         MultipleInputs.addInputPath(mr1, new Path(temperatureFilePath), TextInputFormat.class, TemperatureMapper.class);
 
         // Specifying temporary directory name for storing mapreduce 1's output
-       final String TMP_DIR = "/output5/";
+       final String TMP_DIR = "/output4/";
 
         Path res = new Path(TMP_DIR);
         FileOutputFormat.setOutputPath(mr1, res);
@@ -68,8 +68,6 @@ public class CalculateTemperature {
                if (mr3.waitForCompletion(true)) {
                    flag = 0;
                }
-              //  res.getFileSystem(config).deleteOnExit(res);
-
             }
             System.exit(flag);
         }
