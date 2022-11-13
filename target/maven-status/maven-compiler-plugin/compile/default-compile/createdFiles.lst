@@ -1,4 +1,6 @@
 com/gandharva/mr/reducesidejoin/WeatherMapper.class
+com/gandharva/mr/reducesidejoin/MinMaxCalculator.class
+com/gandharva/mr/reducesidejoin/MinMaxReducer.class
 org/cacheJoin/MapperMapSideJoinDCacheTextFile$MYCOUNTER.class
 com/gandharva/mr/reducesidejoin/TemperatureMapper.class
 com/gandharva/mr/reducesidejoin/CalculateTemperature.class

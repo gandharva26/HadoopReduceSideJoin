@@ -30,7 +30,7 @@ public class CalculateTemperature {
         MultipleInputs.addInputPath(mr1, new Path(temperatureFilePath), TextInputFormat.class, TemperatureMapper.class);
 
         // Specifying temporary directory name for storing mapreduce 1's output
-       final String TMP_DIR = "/output1/";
+       final String TMP_DIR = "/output5/";
 
         Path res = new Path(TMP_DIR);
         FileOutputFormat.setOutputPath(mr1, res);
@@ -41,7 +41,7 @@ public class CalculateTemperature {
         if (mr1.waitForCompletion(true)) {
 
             // Configuration settings for aggregating sales by state
-          Job mr2 = new Job(config, "Sales aggregation by State");
+          Job mr2 = new Job(config, "temperature by State and month");
             mr2.setJarByClass(CalculateTemperature.class);
             mr2.setMapperClass(StateTemperatureMapper.class);
             mr2.setReducerClass(StateMonthAggregatorReduce.class);
@@ -55,8 +55,21 @@ public class CalculateTemperature {
             FileOutputFormat.setOutputPath(mr2, finalOutputPath);
 
            if (mr2.waitForCompletion(true)) {
+               Job mr3 = new Job(config, "state max min temperature");
+               mr3.setJarByClass(CalculateTemperature.class);
+               mr3.setMapperClass(MinMaxCalculator.class);
+               mr3.setReducerClass(MinMaxReducer.class);
+               mr3.setOutputKeyClass(Text.class);
+               mr3.setOutputValueClass(Text.class);
+               TextInputFormat.addInputPath(mr3, finalOutputPath);
+
+               Path outputPath = new Path("/MinMax/");
+               FileOutputFormat.setOutputPath(mr3, outputPath);
+               if (mr3.waitForCompletion(true)) {
+                   flag = 0;
+               }
               //  res.getFileSystem(config).deleteOnExit(res);
-                flag = 0;
+
             }
             System.exit(flag);
         }
